@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký mở tài khoản ngân hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .left-panel {
+            flex: 0 0 40%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 0 0 5px;
+        }
+        .right-panel {
+            flex: 0 0 50%;
+            padding: 20px;
+        }
+        .bank-logo {
+            width: 180px;
+            margin-bottom: 20px;
+        }
+        .bank-image {
+            width: 100%;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header-bar {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .header-actions {
+            display: flex;
+        }
+        .header-actions span {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        .ocr-section {
+            background-color: #e9f7fe;
+            border: 1px dashed #0099cc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .ocr-title {
+            color: #0099cc;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="header-title">Kết nối ngân hàng điện tử</div>
+        <div class="header-actions">
+            <span>?</span>
+            <span>✕</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="left-panel">
+            <img src="icons8-bank-96.png" alt="BIDV Logo" class="bank-logo">
+            <div>
+                <p>Mở tài khoản ngay với nhiều ưu đãi dành cho khách hàng cá nhân</p>
+                <a href="#">Tìm hiểu thêm</a>
+            </div>
+        </div>
+        <div class="right-panel">
+            <h2>Đăng ký mở tài khoản ngân hàng</h2>
+            
+            <!-- Phần trích xuất thông tin từ CCCD đã được loại bỏ -->
+
+            <div class="form-group">
+                <label for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" placeholder="Nhập họ tên đầy đủ">
+            </div>
+            
+            <div class="form-group">
+                <label for="dob">Ngày sinh</label>
+                <input type="date" id="dob">
+            </div>
+            
+            <div class="form-group">
+                <label for="gender">Giới tính</label>
+                <select id="gender">
+                    <option value="">Chọn giới tính</option>
+                    <option value="male">Nam</option>
+                    <option value="female">Nữ</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="idnumber">Số CCCD/CMND</label>
+                <input type="text" id="idnumber" placeholder="Nhập số CCCD/CMND">
+            </div>
+            
+            <!-- Đã loại bỏ phần ngày cấp và nơi cấp -->
+            
+            <div class="form-group">
+                <label for="address">Địa chỉ thường trú</label>
+                <input type="text" id="address" placeholder="Nhập địa chỉ thường trú">
+            </div>
+            
+        
+            
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="goBack()">Quay lại</button>
+                <button class="btn btn-primary" onclick="submitForm()">Đăng ký</button>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                <h3>Đăng ký tài khoản thành công!</h3>
+                <p>Thông tin của bạn đã được gửi tới ngân hàng. Vui lòng chờ xác nhận.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Đã loại bỏ hàm trích xuất thông tin
+        
+        function goBack() {
+            // Xử lý quay lại
+            alert("Đang quay lại bước trước...");
+        }
+        
+        function submitForm() {
+            // Kiểm tra form
+            const fullname = document.getElementById('fullname').value;
+            const idnumber = document.getElementById('idnumber').value;
+            
+            if (fullname && idnumber) {
+                // Hiển thị thông báo thành công
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Cuộn xuống thông báo
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Vui lòng điền đầy đủ thông tin bắt buộc!");
+            }
+        }
+    </script>
+</body>
+</html>
