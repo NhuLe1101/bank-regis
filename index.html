@@ -3,214 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký mở tài khoản ngân hàng</title>
+    <title>Bank Portal - Đăng ký Tài khoản</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-        .container {
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #4527a0;
+            color: white;
+            padding: 15px 20px;
             display: flex;
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            align-items: center;
         }
-        .left-panel {
-            flex: 0 0 40%;
-            background-color: #f9f9f9;
-            padding: 20px;
-            text-align: center;
-            border-radius: 5px 0 0 5px;
+        
+        .header-left {
+            display: flex;
+            align-items: center;
         }
-        .right-panel {
-            flex: 0 0 50%;
-            padding: 20px;
+        
+        .header-right {
+            display: flex;
+            gap: 20px;
         }
-        .bank-logo {
-            width: 180px;
-            margin-bottom: 20px;
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 10px;
         }
-        .bank-image {
-            width: 100%;
-            max-width: 300px;
-            margin-top: 20px;
+        
+        .nav {
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
         }
-        h2 {
+        
+        .nav-item {
+            padding: 15px 20px;
+            text-decoration: none;
             color: #333;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item.active {
+            background-color: #ede7f6;
+            border-bottom: 2px solid #4527a0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
             margin-bottom: 20px;
         }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-title {
+            color: #4527a0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            color: #4527a0;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        
+        .form-column {
+            width: 50%;
+            padding: 0 10px;
+        }
+        
         .form-group {
             margin-bottom: 15px;
         }
-        .form-group label {
+        
+        .form-label {
             display: block;
             margin-bottom: 5px;
-            font-weight: bold;
             color: #555;
         }
-        .form-group input, .form-group select {
+        
+        .form-control {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box;
+            font-size: 14px;
         }
-        .btn-container {
+        
+        .form-radio {
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+            gap: 20px;
         }
+        
+        .radio-label {
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
         .btn {
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 14px;
         }
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
-        .btn-secondary {
-            background-color: #f4f4f4;
+        
+        .btn-cancel {
+            background-color: #e0e0e0;
             color: #333;
         }
-        .header-bar {
-            background-color: #0056b3;
+        
+        .btn-submit {
+            background-color: #4527a0;
             color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        .header-title {
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .header-actions {
-            display: flex;
-        }
-        .header-actions span {
-            margin-left: 15px;
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
             cursor: pointer;
+            color: #777;
         }
-        .ocr-section {
-            background-color: #e9f7fe;
-            border: 1px dashed #0099cc;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .ocr-title {
-            color: #0099cc;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .success-message {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-align: center;
+        
+        @media (max-width: 768px) {
+            .form-column {
+                width: 100%;
+            }
+            
+            .header-right {
+                display: none;
+            }
+            
+            .nav {
+                overflow-x: auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header-bar">
-        <div class="header-title">Kết nối ngân hàng điện tử</div>
-        <div class="header-actions">
-            <span>?</span>
-            <span>✕</span>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">🏛️ BANK PORTAL</div>
+        </div>
+        <div class="header-right">
+            <div>👤 Duong Thi My Hanh</div>
+            <div>📍 Chi nhánh: 170</div>
+            <div>📅 2025-04-24</div>
+            <div>🔒 KHTCN</div>
         </div>
     </div>
-
+    
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="#" class="nav-item">🏠 Trang chủ</a>
+        <a href="#" class="nav-item">↔️ Giao dịch</a>
+        <a href="#" class="nav-item active">👥 Khách hàng</a>
+        <a href="#" class="nav-item">📋 Quy trình</a>
+        <a href="#" class="nav-item">⚙️ Cài đặt</a>
+    </div>
+    
+    <!-- Main Content -->
     <div class="container">
-        <div class="left-panel">
-            <img src="icons8-bank-96.png" alt="BIDV Logo" class="bank-logo">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Đăng ký Tài khoản Khách hàng</div>
+                <button class="close-btn">✕</button>
+            </div>
+            
             <div>
-                <p>Mở tài khoản ngay với nhiều ưu đãi dành cho khách hàng cá nhân</p>
-                <a href="#">Tìm hiểu thêm</a>
-            </div>
-        </div>
-        <div class="right-panel">
-            <h2>Đăng ký mở tài khoản ngân hàng</h2>
-            
-            <!-- Phần trích xuất thông tin từ CCCD đã được loại bỏ -->
-
-            <div class="form-group">
-                <label for="fullname">Họ và tên</label>
-                <input type="text" id="fullname" placeholder="Nhập họ tên đầy đủ">
-            </div>
-            
-            <div class="form-group">
-                <label for="dob">Ngày sinh</label>
-                <input type="date" id="dob">
-            </div>
-            
-            <div class="form-group">
-                <label for="gender">Giới tính</label>
-                <select id="gender">
-                    <option value="">Chọn giới tính</option>
-                    <option value="male">Nam</option>
-                    <option value="female">Nữ</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="idnumber">Số CCCD/CMND</label>
-                <input type="text" id="idnumber" placeholder="Nhập số CCCD/CMND">
-            </div>
-            
-            <!-- Đã loại bỏ phần ngày cấp và nơi cấp -->
-            
-            <div class="form-group">
-                <label for="address">Địa chỉ thường trú</label>
-                <input type="text" id="address" placeholder="Nhập địa chỉ thường trú">
-            </div>
-            
-        
-            
-            <div class="btn-container">
-                <button class="btn btn-secondary" onclick="goBack()">Quay lại</button>
-                <button class="btn btn-primary" onclick="submitForm()">Đăng ký</button>
-            </div>
-            
-            <div id="successMessage" class="success-message">
-                <h3>Đăng ký tài khoản thành công!</h3>
-                <p>Thông tin của bạn đã được gửi tới ngân hàng. Vui lòng chờ xác nhận.</p>
+                <div class="section-title">Thông tin Đăng ký</div>
+                
+                <form id="registration-form">
+                    <div class="form-row">
+                        <!-- Left Column -->
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Ngày sinh</label>
+                                <input type="date" class="form-control" name="dateOfBirth" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Giới tính</label>
+                                <div class="form-radio">
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="male" checked> 
+                                        <span style="margin-left: 5px;">Nam</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="female"> 
+                                        <span style="margin-left: 5px;">Nữ</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Loại tài khoản</label>
+                                <div class="form-radio">
+                                    <label class="radio-label">
+                                        <input type="radio" name="accountType" value="individual" checked> 
+                                        <span style="margin-left: 5px;">Đơn lẻ</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="accountType" value="joint"> 
+                                        <span style="margin-left: 5px;">Chung</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Số CCCD/CMND</label>
+                                <input type="text" class="form-control" name="idCardNumber" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Ngày cấp CCCD</label>
+                                <input type="date" class="form-control" name="idCardIssueDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Nơi cấp</label>
+                                <input type="text" class="form-control" name="idCardIssuePlace" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column -->
+                        <div class="form-column">
+                            
+                            <div class="form-group">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" name="phoneNumber" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email (nếu có)</label>
+                                <input type="email" class="form-control" name="email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Địa chỉ 1</label>
+                                <input type="text" class="form-control" name="address1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Địa chỉ 2</label>
+                                <input type="text" class="form-control" name="address2" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Địa chỉ 3</label>
+                                <input type="text" class="form-control" name="address3" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Địa chỉ 4</label>
+                                <input type="text" class="form-control" name="address4">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel">Hủy</button>
+                        <button type="submit" class="btn btn-submit">Đăng ký</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
     <script>
-        // Đã loại bỏ hàm trích xuất thông tin
-        
-        function goBack() {
-            // Xử lý quay lại
-            alert("Đang quay lại bước trước...");
-        }
-        
-        function submitForm() {
-            // Kiểm tra form
-            const fullname = document.getElementById('fullname').value;
-            const idnumber = document.getElementById('idnumber').value;
-            
-            if (fullname && idnumber) {
-                // Hiển thị thông báo thành công
-                document.getElementById('successMessage').style.display = 'block';
-                
-                // Cuộn xuống thông báo
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert("Vui lòng điền đầy đủ thông tin bắt buộc!");
-            }
-        }
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Đăng ký tài khoản thành công!');
+        });
     </script>
 </body>
 </html>
