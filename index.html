@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Portal - Đăng ký Tài khoản</title>
     <style>
+         :root {
+            --primary-color: #5a35b4;
+            --secondary-color: #f5f5f5;
+            --border-color: #ccc;
+            --error-color: #e53935;
+            --success-color: #43a047;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -84,7 +91,7 @@
         
         .card-title {
             color: #4527a0;
-            font-size: 18px;
+            font-size: 24px;
             font-weight: bold;
         }
         
@@ -179,6 +186,37 @@
                 overflow-x: auto;
             }
         }
+        /* Account type selector */
+        .account-type-selector {
+            display: flex;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .account-type {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .account-type.active {
+            border-color: var(--primary-color);
+            background-color: rgba(90, 53, 180, 0.05);
+        }
+
+        .account-type-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .account-type-desc {
+            font-size: 12px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -211,7 +249,16 @@
                 <div class="card-title">Đăng ký Tài khoản Khách hàng</div>
                 <button class="close-btn">✕</button>
             </div>
-            
+            <div class="account-type-selector">
+                <div class="account-type active">
+                    <div class="account-type-title">Cá nhân</div>
+                    <div class="account-type-desc">Đăng ký tài khoản cho khách hàng cá nhân</div>
+                </div>
+                <div class="account-type" onclick="window.location.href='/doanhnghiep.html'">
+                    <div class="account-type-title">Doanh nghiệp</div>
+                    <div class="account-type-desc">Đăng ký tài khoản cho khách hàng doanh nghiệp</div>
+                </div>
+            </div>
             <div>
                 <div class="section-title">Thông tin Đăng ký</div>
                 
@@ -226,7 +273,7 @@
                             
                             <div class="form-group">
                                 <label class="form-label">Ngày sinh</label>
-                                <input type="text" class="form-control" name="dateOfBirth" required>
+                                <input type="text" class="form-control" name="dateOfBirth" placeholder="DD/MM/YYYY" required>
                             </div>
                             
                             <div class="form-group">
@@ -264,7 +311,7 @@
                             
                             <div class="form-group">
                                 <label class="form-label">Ngày cấp CCCD</label>
-                                <input type="text" class="form-control" name="idCardIssueDate" required>
+                                <input type="text" class="form-control" name="idCardIssueDate" placeholder="DD/MM/YYYY" required>
                             </div>
                             
                             <div class="form-group">

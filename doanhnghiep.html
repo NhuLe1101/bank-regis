@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký Tài khoản Doanh nghiệp</title>
+    <style>
+        :root {
+            --primary-color: #5a35b4;
+            --secondary-color: #f5f5f5;
+            --border-color: #ccc;
+            --error-color: #e53935;
+            --success-color: #43a047;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #4527a0;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 20px;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .bank-portal {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav {
+            display: flex;
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-item {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-item.active {
+            background-color: #ede7f6;
+            border-bottom: 2px solid #4527a0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #f5f5f5;
+            border: 1px solid var(--border-color);
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--error-color);
+        }
+
+        .form-divider {
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+
+        /* Account type selector */
+        .account-type-selector {
+            display: flex;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .account-type {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .account-type.active {
+            border-color: var(--primary-color);
+            background-color: rgba(90, 53, 180, 0.05);
+        }
+
+        .account-type-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .account-type-desc {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">🏛️ BANK PORTAL</div>
+        </div>
+        <div class="header-right">
+            <div>👤 Duong Thi My Hanh</div>
+            <div>📍 Chi nhánh: 170</div>
+            <div>📅 2025-04-24</div>
+            <div>🔒 KHTCN</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="#" class="nav-item">🏠 Trang chủ</a>
+        <a href="#" class="nav-item">↔️ Giao dịch</a>
+        <a href="#" class="nav-item active">👥 Khách hàng</a>
+        <a href="#" class="nav-item">📋 Quy trình</a>
+        <a href="#" class="nav-item">⚙️ Cài đặt</a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <span class="close-btn">×</span>
+        <h2>Đăng ký Tài khoản Khách hàng</h2>
+
+        <!-- Account Type Selector -->
+        <div class="account-type-selector">
+            <div class="account-type" onclick="window.location.href='/'">
+                <div class="account-type-title">Cá nhân</div>
+                <div class="account-type-desc">Đăng ký tài khoản cho khách hàng cá nhân</div>
+            </div>
+            <div class="account-type active">
+                <div class="account-type-title">Doanh nghiệp</div>
+                <div class="account-type-desc">Đăng ký tài khoản cho khách hàng doanh nghiệp</div>
+            </div>
+        </div>
+
+        <form id="businessRegistrationForm">
+            <div class="section-header">Thông tin Đăng ký</div>
+
+            <!-- Thông tin doanh nghiệp -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="taxCode" class="required">Mã số thuế</label>
+                    <input type="text" id="taxCode" name="taxCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="companyName" class="required">Tên công ty</label>
+                    <input type="text" id="companyName" name="companyName" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="companyAddress" class="required">Địa chỉ doanh nghiệp</label>
+                    <input type="text" id="companyAddress" name="companyAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="city" class="required">Tỉnh/Thành phố</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+            </div>
+
+            <div class="form-divider"></div>
+            <div class="section-header">Thông tin Người đại diện</div>
+
+            <!-- Thông tin người đại diện -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullName" class="required">Họ và tên chủ tài khoản</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="position" class="required">Chức vụ</label>
+                    <input type="text" id="position" name="position" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="idNumber" class="required">Số CCCD/CMND</label>
+                    <input type="text" id="idNumber" name="idNumber" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Giới tính</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="male" name="gender" value="Nam" checked>
+                            <label for="male">Nam</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="female" name="gender" value="Nữ">
+                            <label for="female">Nữ</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="birthDate" class="required">Ngày sinh</label>
+                    <input type="text" id="birthDate" name="birthDate" placeholder="DD/MM/YYYY" required>
+                </div>
+                <div class="form-group">
+                    <label for="nationality" class="required">Quốc tịch</label>
+                    <input type="text" id="nationality" name="nationality" value="Việt Nam" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="idIssueDate" class="required">Ngày cấp CCCD</label>
+                    <input type="text" id="idIssueDate" name="idIssueDate" placeholder="DD/MM/YYYY" required>
+                </div>
+                <div class="form-group">
+                    <label for="idIssuePlace" class="required">Nơi cấp</label>
+                    <input type="text" id="idIssuePlace" name="idIssuePlace" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone" class="required">Số điện thoại</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (nếu có)</label>
+                    <input type="email" id="email" name="email">
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="btn-secondary">Hủy</button>
+                <button type="submit" class="btn-primary">Đăng ký</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('businessRegistrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Lấy tất cả dữ liệu từ form
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Chuyển đổi FormData thành object
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Thêm flag để phân biệt đây là doanh nghiệp
+            data.accountType = 'business';
+            
+            // Gửi dữ liệu đến server (cùng endpoint với form cá nhân)
+            console.log('Dữ liệu đã submit:', data);
+            
+            // Ở đây bạn có thể thêm code để gửi dữ liệu đến server
+            // fetch('/api/register', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(data)
+            // })
+            // .then(response => response.json())
+            // .then(result => {
+            //     if (result.success) {
+            //         alert('Đăng ký thành công!');
+            //         window.location.href = '/success';
+            //     } else {
+            //         alert('Đăng ký thất bại: ' + result.message);
+            //     }
+            // });
+        });
+        
+        // Thêm validation cho các trường
+        const validationRules = {
+            taxCode: {
+                pattern: /^\d{10}$|^\d{10}-\d{3}$/,
+                message: 'Mã số thuế phải có 10 hoặc 13 chữ số'
+            },
+            phone: {
+                pattern: /^0\d{9}$/,
+                message: 'Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số'
+            },
+            idNumber: {
+                pattern: /^\d{9}$|^\d{12}$/,
+                message: 'Số CCCD/CMND phải có 9 hoặc 12 chữ số'
+            },
+            birthDate: {
+                pattern: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+                message: 'Ngày sinh phải có định dạng DD/MM/YYYY'
+            },
+            idIssueDate: {
+                pattern: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+                message: 'Ngày cấp phải có định dạng DD/MM/YYYY'
+            },
+            email: {
+                pattern: /^$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: 'Email không hợp lệ'
+            }
+        };
+        
+        // Thêm sự kiện validate cho các input
+        Object.keys(validationRules).forEach(field => {
+            const input = document.getElementById(field);
+            if (input) {
+                input.addEventListener('blur', function() {
+                    const rule = validationRules[field];
+                    
+                    // Bỏ qua validation cho email nếu trống
+                    if (field === 'email' && !this.value) return;
+                    
+                    if (!rule.pattern.test(this.value)) {
+                        this.setCustomValidity(rule.message);
+                        this.style.borderColor = 'var(--error-color)';
+                    } else {
+                        this.setCustomValidity('');
+                        this.style.borderColor = 'var(--border-color)';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
