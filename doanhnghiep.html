@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,21 +33,23 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .header-left {
             display: flex;
             align-items: center;
         }
-        
+
         .header-right {
             display: flex;
             gap: 20px;
         }
+
         .logo {
             font-size: 20px;
             font-weight: bold;
             margin-right: 10px;
         }
+
         .bank-portal {
             font-size: 18px;
             font-weight: bold;
@@ -219,6 +222,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <div class="header">
@@ -361,43 +365,30 @@
     </div>
 
     <script>
-        document.getElementById('businessRegistrationForm').addEventListener('submit', function(e) {
+        document.getElementById('businessRegistrationForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Lấy tất cả dữ liệu từ form
             const formData = new FormData(this);
             const data = {};
-            
+
             // Chuyển đổi FormData thành object
             for (let [key, value] of formData.entries()) {
                 data[key] = value;
             }
-            
+
             // Thêm flag để phân biệt đây là doanh nghiệp
             data.accountType = 'business';
-            
+
             // Gửi dữ liệu đến server (cùng endpoint với form cá nhân)
             console.log('Dữ liệu đã submit:', data);
-            
-            // Ở đây bạn có thể thêm code để gửi dữ liệu đến server
-            // fetch('/api/register', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify(data)
-            // })
-            // .then(response => response.json())
-            // .then(result => {
-            //     if (result.success) {
-            //         alert('Đăng ký thành công!');
-            //         window.location.href = '/success';
-            //     } else {
-            //         alert('Đăng ký thất bại: ' + result.message);
-            //     }
-            // });
+
+            // Hiển thị thông báo thành công như trong form cá nhân
+            alert('Đăng ký tài khoản thành công!');
+
+            // Phần còn lại của code fetch API có thể giữ nguyên...
         });
-        
+
         // Thêm validation cho các trường
         const validationRules = {
             taxCode: {
@@ -425,17 +416,17 @@
                 message: 'Email không hợp lệ'
             }
         };
-        
+
         // Thêm sự kiện validate cho các input
         Object.keys(validationRules).forEach(field => {
             const input = document.getElementById(field);
             if (input) {
-                input.addEventListener('blur', function() {
+                input.addEventListener('blur', function () {
                     const rule = validationRules[field];
-                    
+
                     // Bỏ qua validation cho email nếu trống
                     if (field === 'email' && !this.value) return;
-                    
+
                     if (!rule.pattern.test(this.value)) {
                         this.setCustomValidity(rule.message);
                         this.style.borderColor = 'var(--error-color)';
@@ -448,4 +439,5 @@
         });
     </script>
 </body>
+
 </html>
