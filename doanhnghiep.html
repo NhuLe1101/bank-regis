@@ -368,25 +368,44 @@
         document.getElementById('businessRegistrationForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Lấy tất cả dữ liệu từ form
-            const formData = new FormData(this);
-            const data = {};
+            // Tạo popup overlay
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            overlay.style.display = 'flex';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.zIndex = '1000';
 
-            // Chuyển đổi FormData thành object
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
+            // Tạo popup box
+            const popup = document.createElement('div');
+            popup.style.backgroundColor = '#fff';
+            popup.style.padding = '20px';
+            popup.style.borderRadius = '5px';
+            popup.style.maxWidth = '400px';
+            popup.style.textAlign = 'center';
 
-            // Thêm flag để phân biệt đây là doanh nghiệp
-            data.accountType = 'business';
+            // Nội dung popup
+            popup.innerHTML = `
+<h3>Đăng ký tài khoản thành công!</h3>
+<p>Thông tin của bạn đã được gửi tới ngân hàng. Vui lòng chờ xác nhận.</p>
+<button id="ok-button" style="padding: 8px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">OK</button>
+`;
 
-            // Gửi dữ liệu đến server (cùng endpoint với form cá nhân)
-            console.log('Dữ liệu đã submit:', data);
+            // Thêm popup vào overlay
+            overlay.appendChild(popup);
 
-            // Hiển thị thông báo thành công như trong form cá nhân
-            alert('Đăng ký tài khoản thành công!');
+            // Thêm overlay vào body
+            document.body.appendChild(overlay);
 
-            // Phần còn lại của code fetch API có thể giữ nguyên...
+            // Xử lý nút OK để đóng popup
+            document.getElementById('ok-button').addEventListener('click', function () {
+                document.body.removeChild(overlay);
+            });
         });
 
         // Thêm validation cho các trường

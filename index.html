@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Portal - Đăng ký Tài khoản</title>
     <style>
-         :root {
+        :root {
             --primary-color: #5a35b4;
             --secondary-color: #f5f5f5;
             --border-color: #ccc;
             --error-color: #e53935;
             --success-color: #43a047;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
         }
-        
+
         .header {
             background-color: #4527a0;
             color: white;
@@ -31,29 +33,29 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .header-left {
             display: flex;
             align-items: center;
         }
-        
+
         .header-right {
             display: flex;
             gap: 20px;
         }
-        
+
         .logo {
             font-size: 20px;
             font-weight: bold;
             margin-right: 10px;
         }
-        
+
         .nav {
             background-color: white;
             border-bottom: 1px solid #e0e0e0;
             display: flex;
         }
-        
+
         .nav-item {
             padding: 15px 20px;
             text-decoration: none;
@@ -62,18 +64,18 @@
             display: flex;
             align-items: center;
         }
-        
+
         .nav-item.active {
             background-color: #ede7f6;
             border-bottom: 2px solid #4527a0;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 15px;
         }
-        
+
         .card {
             background-color: white;
             border-radius: 8px;
@@ -81,47 +83,47 @@
             padding: 20px;
             margin-bottom: 20px;
         }
-        
+
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .card-title {
             color: #4527a0;
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         .section-title {
             color: #4527a0;
             font-size: 16px;
             margin-bottom: 20px;
         }
-        
+
         .form-row {
             display: flex;
             flex-wrap: wrap;
             margin: 0 -10px;
         }
-        
+
         .form-column {
             width: 50%;
             padding: 0 10px;
         }
-        
+
         .form-group {
             margin-bottom: 15px;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 5px;
             color: #555;
         }
-        
+
         .form-control {
             width: 100%;
             padding: 10px;
@@ -129,24 +131,24 @@
             border-radius: 4px;
             font-size: 14px;
         }
-        
+
         .form-radio {
             display: flex;
             gap: 20px;
         }
-        
+
         .radio-label {
             display: flex;
             align-items: center;
         }
-        
+
         .form-actions {
             display: flex;
             justify-content: flex-end;
             margin-top: 20px;
             gap: 10px;
         }
-        
+
         .btn {
             padding: 10px 20px;
             border: none;
@@ -154,17 +156,17 @@
             cursor: pointer;
             font-size: 14px;
         }
-        
+
         .btn-cancel {
             background-color: #e0e0e0;
             color: #333;
         }
-        
+
         .btn-submit {
             background-color: #4527a0;
             color: white;
         }
-        
+
         .close-btn {
             background: none;
             border: none;
@@ -172,20 +174,21 @@
             cursor: pointer;
             color: #777;
         }
-        
+
         @media (max-width: 768px) {
             .form-column {
                 width: 100%;
             }
-            
+
             .header-right {
                 display: none;
             }
-            
+
             .nav {
                 overflow-x: auto;
             }
         }
+
         /* Account type selector */
         .account-type-selector {
             display: flex;
@@ -219,6 +222,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <div class="header">
@@ -232,7 +236,7 @@
             <div>🔒 KHTCN</div>
         </div>
     </div>
-    
+
     <!-- Navigation -->
     <div class="nav">
         <a href="#" class="nav-item">🏠 Trang chủ</a>
@@ -241,7 +245,7 @@
         <a href="#" class="nav-item">📋 Quy trình</a>
         <a href="#" class="nav-item">⚙️ Cài đặt</a>
     </div>
-    
+
     <!-- Main Content -->
     <div class="container">
         <div class="card">
@@ -261,7 +265,7 @@
             </div>
             <div>
                 <div class="section-title">Thông tin Đăng ký</div>
-                
+
                 <form id="registration-form">
                     <div class="form-row">
                         <!-- Left Column -->
@@ -270,91 +274,93 @@
                                 <label class="form-label">Họ và tên</label>
                                 <input type="text" class="form-control" name="fullName" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Ngày sinh</label>
-                                <input type="text" class="form-control" name="dateOfBirth" placeholder="DD/MM/YYYY" required>
+                                <input type="text" class="form-control" name="dateOfBirth" placeholder="DD/MM/YYYY"
+                                    required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Giới tính</label>
                                 <div class="form-radio">
                                     <label class="radio-label">
-                                        <input type="radio" name="gender" value="male" checked> 
+                                        <input type="radio" name="gender" value="male" checked>
                                         <span style="margin-left: 5px;">Nam</span>
                                     </label>
                                     <label class="radio-label">
-                                        <input type="radio" name="gender" value="female"> 
+                                        <input type="radio" name="gender" value="female">
                                         <span style="margin-left: 5px;">Nữ</span>
                                     </label>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Loại tài khoản</label>
                                 <div class="form-radio">
                                     <label class="radio-label">
-                                        <input type="radio" name="accountType" value="individual" checked> 
+                                        <input type="radio" name="accountType" value="individual" checked>
                                         <span style="margin-left: 5px;">Đơn lẻ</span>
                                     </label>
                                     <label class="radio-label">
-                                        <input type="radio" name="accountType" value="joint"> 
+                                        <input type="radio" name="accountType" value="joint">
                                         <span style="margin-left: 5px;">Chung</span>
                                     </label>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Số CCCD/CMND</label>
                                 <input type="text" class="form-control" name="idCardNumber" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Ngày cấp CCCD</label>
-                                <input type="text" class="form-control" name="idCardIssueDate" placeholder="DD/MM/YYYY" required>
+                                <input type="text" class="form-control" name="idCardIssueDate" placeholder="DD/MM/YYYY"
+                                    required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Nơi cấp</label>
                                 <input type="text" class="form-control" name="idCardIssuePlace" required>
                             </div>
                         </div>
-                        
+
                         <!-- Right Column -->
                         <div class="form-column">
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Số điện thoại</label>
                                 <input type="tel" class="form-control" name="phoneNumber" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Email (nếu có)</label>
                                 <input type="email" class="form-control" name="email">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Địa chỉ 1</label>
                                 <input type="text" class="form-control" name="address1" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Địa chỉ 2</label>
                                 <input type="text" class="form-control" name="address2" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Địa chỉ 3</label>
                                 <input type="text" class="form-control" name="address3" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Địa chỉ 4</label>
                                 <input type="text" class="form-control" name="address4">
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="form-actions">
                         <button type="button" class="btn btn-cancel">Hủy</button>
                         <button type="submit" class="btn btn-submit">Đăng ký</button>
@@ -365,10 +371,49 @@
     </div>
 
     <script>
-        document.getElementById('registration-form').addEventListener('submit', function(e) {
+        document.getElementById('registration-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            alert('Đăng ký tài khoản thành công!');
+
+            // Tạo popup overlay
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            overlay.style.display = 'flex';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.zIndex = '1000';
+
+            // Tạo popup box
+            const popup = document.createElement('div');
+            popup.style.backgroundColor = '#fff';
+            popup.style.padding = '20px';
+            popup.style.borderRadius = '5px';
+            popup.style.maxWidth = '400px';
+            popup.style.textAlign = 'center';
+
+            // Nội dung popup
+            popup.innerHTML = `
+        <h3>Đăng ký tài khoản thành công!</h3>
+        <p>Thông tin của bạn đã được gửi tới ngân hàng. Vui lòng chờ xác nhận.</p>
+        <button id="ok-button" style="padding: 8px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">OK</button>
+    `;
+
+            // Thêm popup vào overlay
+            overlay.appendChild(popup);
+
+            // Thêm overlay vào body
+            document.body.appendChild(overlay);
+
+            // Xử lý nút OK để đóng popup
+            document.getElementById('ok-button').addEventListener('click', function () {
+                document.body.removeChild(overlay);
+            });
         });
     </script>
 </body>
+
 </html>
